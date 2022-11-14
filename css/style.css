@@ -1,0 +1,191 @@
+@charset "utf-8";
+
+/*rem単語基準のため*/
+html {
+  font-size: 18px;
+}
+
+body{
+  font-family: 'Poppins', sans-serif;
+}
+
+
+
+.header-nav__list {
+  display: flex;
+  justify-content: space-around;
+  background-color: #888;
+  padding: 1.5% 5%;
+  
+}
+
+.header-nav__list__item {
+  font-size: 1.2rem;
+}
+
+.header-nav__list__item a {
+  color: #fff;
+  text-decoration: none;
+  }
+
+
+
+
+  /*画像にCSSを適用している。ここでdivの文字編集すると画像にも反映する。*/
+.top{
+  height: 75vh;
+  background: url(../img/top.png) no-repeat center;/*背景なためimgタグじゃない*/
+  background-size: cover;
+  /*topにもし文字が来たときの配置指定。*/
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/*ここで文字の位置の指定。ここで文字のデザイン指定したらダメ？*/
+/*ここはテキストは配置される場所なため？*/
+.top-wrapper{
+  width: 47.5%; /*topで位置指定をされている状態での横幅、フレックスボックス内の横幅？*/
+  /*ここ必要？*/
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /*見出しが改行されてしまう。後ろの枠？も文字より小さくなったりしている、white-space,@media screenなどしてみたが上手く指示できなかった。*/
+}
+.top-wrapper__ttl{
+  font-size: 2.5rem;
+  color: #fff;
+  background-color: #007;
+  /*上のコードまではtop-wrapper内で適応できたがpaddingは数値を変えないと思ったような形にはならない？padding,margin理解不足*/
+  /*基準は文字の外からの余白？だからtop-wrapper内ですると形が変わる*/
+  padding: 3.75%;
+}
+
+
+
+#service{
+  width: 80%;
+  margin: 5% auto;
+}
+
+.ttl{
+  font-size: 3rem;
+  text-align: center;
+  color: #75d5ff;
+  margin-bottom: 5%;
+}
+.service-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.service-wrapper__left img{
+  width: 80%;
+  height: auto;
+}
+.service-wrapper__right__ttl{
+  font-size: 1.2rem;
+  color: #75d5ff;
+  padding: 2.5% 0;
+}
+.service-wrapper__right__text{
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+}
+
+
+
+#news{
+  text-align: center;
+  margin-bottom: 5%;/*newsのテキストとpriceに間隔がなく、ここにmarginをつけたみた*/
+}
+/*serviceのttlで反応している
+.ttl*/
+.news-wrapper{
+/*divタグはブロック要素,インライン要素のspanタグではだめ？...pタグがブロック要素のためdivタグを使用。インライン要素は文章の一部として扱われる要素、ブロック要素は１つのかたまりとして認識される要素！そのためcssでブロック要素をインライン要素のように横並びになるようにした...？中央寄せの状態で文字は左詰めができるようになる。justify-contentの左からスタートではできない？*/
+  display: inline-block;
+  /*justify-content: flex-start; ブロックが左から始まるのみで文字には適応されない...クラスtextでかけられる？*/
+  text-align: left;
+  line-height: 1.5;
+
+}
+
+
+
+.price-wrapper__table{
+  border: double #75d5ff 10px;
+  width: 100%;
+  text-align: center;
+}
+.price-wrapper__table tr{
+  border: solid #75d5ff 3px;
+  padding: 10%; /*必要？*/
+}
+.price-wrapper__table th {
+  border: solid #75d5ff 3px;
+  padding: 1%;
+}
+.price-wrapper__table td {
+  border: solid #75d5ff 3px;
+  padding: 1%;
+}
+
+
+
+#contact{
+  background-color: rgb(241,241,241);
+  margin-top: 5%;/*priceとの間隔がなくmargin入れてみた*/
+}
+#contact .ttl{
+  padding: 5% 0%;
+  margin: 0%;
+  /*paddingにつくbackground-color: #555;*/
+}
+.contact-form {
+  width: 70%;
+  margin: 0 auto;
+}
+.contact-form__item label {
+  display: inline-block;
+  width: 30%;
+  line-height: 2;
+}
+.contact-form__item input, textarea {
+  /*box-sizing: border-boxはpadding,borderをheight,widthの内側に向かってかけられるプロパティー、通常モードの値はcontent boxでこの場合height,widthの外側にかけられる、、、横並びでheight100px width50％の四角2つ書いての後padding10pxをかけて見ると外側につくため四角が２段になる。つまり100％で収まらない形になる。ここでborder-boxを使用すると内側にかかるため100％という値に影響がない...*/
+  box-sizing: border-box;
+  border: solid #ddd 1px;
+  width: 60%;
+  margin-bottom: 2.5%;/*marginとpaddingの使い分けがまだピントこない*/
+}
+.contact-form__item input {
+  padding: 1%;/*入力する箱が広がった...というより入力欄、文字から１％広げたそれに対してボーダーもついてきた...?上記でpaddingしても反応したけど下のメッセージにも適用されてしまう*/
+}
+.contact-form__item textarea {
+  vertical-align: top;/*massageの文字が記入箱の上揃った*/
+  height: 25vh;/*vh(viewport)単位と％の違いは％は親要素を基準にしているviewportは機械のスクリーンサイズを基準にしているため、画像をフルスクリーンで表示せたいときなど...*/
+}
+
+.contact-form__btn{
+  text-align: center;
+}
+.contact-form__btn__submit{
+  padding: 1.5% 5%;
+  background-color: #555;
+  color: #fff;
+  font-weight: bold;
+  border: none;
+  margin: 5% 0;
+}
+
+
+.footer{
+  background-color: #444;
+  padding: 5%;
+  text-align: center;
+  color: #fff;
+}
+/*クラス名必要？
+.footer-wrapper
+.footer-wrapper__txt
+*/
